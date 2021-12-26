@@ -1,0 +1,22 @@
+{
+    "name": "softven/etl",
+    "description": "Mini ETL to read csv,xlsx,html table and select sql from mysql and postgresql",
+    "keywords": ["etl", "extract","transform", "load"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leonardo",
+            "email": "softvenca@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lib\\": "src/Lib/",
+            "ETL\\": "src/ETL/"
+        }
+    }
+}
