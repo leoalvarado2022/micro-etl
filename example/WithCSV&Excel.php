@@ -22,7 +22,5 @@
 	$ChainCSV = new ETL\Transform\ChainProcess($csv,$fieldsINCSV,$fieldsDeleteCSV);
 
 	$finalDataExcel = $ChainExcel->process()->getData();
-	$finalDataJSON = $finalDataExcel->convertTo(new Loader(new JSON()));
-	$finalDataCSV = $finalDataExcel->convertTo(new Loader(new CSV()));
-
-	echo $finalDataJSON;
+	echo $finalDataJSON = $finalDataExcel->convertTo(new Loader(JSON::class));
+	$finalDataCSV = $finalDataExcel->convertTo(new Loader(CSV::class)); //generate a csvData in the example Folder

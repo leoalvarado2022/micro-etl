@@ -12,6 +12,7 @@
 		}
 
 		private function csv($data) {
+			//Todo, make the csv output file to download
 			$hanlder = fopen('csvData.csv', 'w');
   
 			foreach ($data as $datum) {

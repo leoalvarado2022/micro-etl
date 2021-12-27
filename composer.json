@@ -18,5 +18,7 @@
             "Lib\\": "src/Lib/",
             "ETL\\": "src/ETL/"
         }
-    }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
 }

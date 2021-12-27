@@ -1,34 +1,41 @@
 <?php
 	namespace Lib;
-
+	use \PDO as PDO;
 	class Connection{
 
 		private $sql;
 		private $res;
 		private $db;
-		public function __construct(DB $db){
-			$this->db = $db;
-			$this->db->connection();
+		public function __construct($db,$config){
+			$this->db = new $db;
+			$this->db->connection($config);
 		}
 
 		public function query($sql){
 			$this->sql = $sql;
 			$this->res = $this->db->query($sql);
+			return $this;
 		}
 
 		public function getLastSQL() {
 			return $this->sql;
 		}
 
-		public function fetchRow() {
-			return $this->res->fetch();
+		public function rowCount(){
+			return $this->res->rowCount();
+		}
+
+		public function fetchOne() {
+			if($this->res !== null){
+				return $this->res->fetch(PDO::FETCH_ASSOC);
+			}
+			return [];
 		}
 
 		public function fetchList() {
-			$data = [];
-			while($datum = $this->res->fetch()){
-				$data[] = $datum;
+			if($this->res !== null){
+				return $this->res->fetchAll(PDO::FETCH_ASSOC);
 			}
-			return $data;
+			return [];
 		}
 	}

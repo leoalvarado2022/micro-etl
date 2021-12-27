@@ -12,7 +12,7 @@
 		private $data;
 		private $rules;
 
-		public function __construct(\Iterator $iterator,$fieldsIN,$fieldsDelete = []) {
+		public function __construct(\Iterator $iterator,$fieldsIN = [],$fieldsDelete = []) {
 			if($iterator instanceof \Iterator ) {
 				$this->iterator = $iterator;
 			}else {
@@ -48,8 +48,21 @@
 			$this->rules[$name] = $callback;
 		}
 
+		public function processRules() {
+			//TODO
+		}
+
+		public function deleteFields() {
+			//TODO
+		}
+
 		private function applyRule($name,$value){
-			return $this->rules[$name]($value);
+			return call_user_func($this->rules[$name],$value);
+		}
+
+		public function setData() { //used when not process the data
+			$this->data = $this->iterator->currentElement;
+			return $this;
 		}
 
 		public function getData($type = "array") {
