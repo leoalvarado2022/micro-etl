@@ -73,6 +73,10 @@
 			return $this;
 		}
 
+		public function getArray() {
+			return $this->data;
+		}
+
 		public function convertTo(Loader $Loader) {
 			return $Loader->convert($this->data);
 		}
